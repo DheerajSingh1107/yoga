@@ -35,23 +35,23 @@ function setup() {
 
 function yogiLoaded(){
   console.log("Model ready!");
-  classifyPose();
+ // classifyPose();
 }
 
 
 function classifyPose(){
-  if (pose) {
+ // if (pose) {
     let inputs = [];
     for (let i = 0; i < pose.keypoints.length; i++) {
       let x = pose.keypoints[i].position.x;
       let y = pose.keypoints[i].position.y;
       inputs.push(x);
       inputs.push(y);
-    }
-    yogi.classify(inputs, gotResult);
-  } else {
-    setTimeout(classifyPose, 1000);
-  }
+   }
+//     yogi.classify(inputs, gotResult);
+//   } else {
+//     setTimeout(classifyPose, 1000);
+//   }
 }
 
 function gotResult(error, results) {
@@ -98,6 +98,7 @@ function draw() {
       strokeWeight(8);
       stroke(244, 194, 194);
       line(a.position.x, a.position.y, b.position.x, b.position.y);
+      classifyPose();
     }
   }
   pop();
